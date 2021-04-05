@@ -1,0 +1,202 @@
+{
+    "strains": {
+        "B.1.1.7": {
+            "identifier": "B.1.1.7",
+            "common name": "UK",
+            "location": "UK",
+            "aliases": [
+                "UK",
+                "20I/501Y.V1"
+            ],
+            "mutations": {
+                "ORF1ab": [
+                    "ORF1ab:T1001I",
+                    "ORF1ab:A1708D",
+                    "ORF1ab:I2230T",
+                    "ORF1ab:del3675-3677 SGF"
+                ],
+                "S": [
+                    "S:del69-70 HV",
+                    "S:del144 Y",
+                    "S:N501Y",
+                    "S:A570D",
+                    "S:D614G",
+                    "S:P681H",
+                    "S:T716I",
+                    "S:S982A",
+                    "S:D1118H"
+                ],
+                "ORF8": [
+                    "ORF8:Q27*",
+                    "ORF8:R52I",
+                    "ORF8:Y73C"
+                ],
+                "N": [
+                    "N:D3L",
+                    "N:S235F"
+                ]
+            },
+            "source": "https://outbreak.info"
+        },
+        "B.1.351": {
+            "identifier": "B.1.351",
+            "common name": "South Africa",
+            "location": "South Africa",
+            "aliases": [
+                "South Africa",
+                "20H/501Y.V2"
+            ],
+            "mutations": {
+                "ORF1ab": [
+                    "ORF1ab:K1655N"
+                ],
+                "E": [
+                    "E:P71L"
+                ],
+                "N": [
+                    "N:T205I"
+                ],
+                "S": [
+                    "S:K417N",
+                    "S:E484K",
+                    "S:N501Y",
+                    "S:D614G",
+                    "S:A701V"
+                ]
+            },
+            "source": "https://outbreak.info"
+        },
+        "P.1": {
+            "identifier": "P.1",
+            "common name": "Brazil",
+            "location": "Brazil",
+            "aliases": [
+                "Brazil",
+                "Japan",
+                "20J/501Y.V3"
+            ],
+            "mutations": {
+                "N": [
+                    "N:P80R"
+                ],
+                "ORF8": [
+                    "ORF8:E92K"
+                ],
+                "ORF3a": [
+                    "ORF3a:G174C"
+                ],
+                "S": [
+                    "S:L18F",
+                    "S:T20N",
+                    "S:P26S",
+                    "S:D138Y",
+                    "S:R190S",
+                    "S:K417T",
+                    "S:E484K",
+                    "S:N501Y",
+                    "S:D614G",
+                    "S:H655Y",
+                    "S:T1027I"
+                ],
+                "ORF1ab": [
+                    "ORF1ab:E5662D",
+                    "ORF1ab:K1795Q",
+                    "ORF1ab:S1188L",
+                    "ORF1ab:I760T",
+                    "ORF1ab:del3675-3677 SGF",
+                    "ORF1ab:F681L"
+                ]
+            },
+            "source": "https://outbreak.info"
+        },
+        "B.1.429": {
+            "identifier": "B.1.429",
+            "common name": "West Coast",
+            "location": "California",
+            "aliases": [
+                "CA VUI1",
+                "CAL.20C"
+            ],
+            "mutations": {
+                "ORF1ab": [
+                    "ORF1ab:T265I",
+                    "ORF1ab:I4205V"
+                ],
+                "S": [
+                    "S:S13I",
+                    "S:W152C",
+                    "S:L452R",
+                    "S:D614G"
+                ],
+                "ORF3a": [
+                    "ORF3a:Q57H"
+                ],
+                "N": [
+                    "N:T205I"
+                ]
+            },
+            "source": "https://outbreak.info"
+        },
+        "B.1.427": {
+            "identifier": "B.1.427",
+            "common name": "West Coast",
+            "location": "California",
+            "aliases": [
+                "CA VUI1",
+                "CAL.20C"
+            ],
+            "mutations": {
+                "S": [
+                    "S:D614G",
+                    "S:L452R"
+                ],
+                "ORF1ab": [
+                    "ORF1ab:T265I",
+                    "ORF1ab:S3158T"
+                ],
+                "N": [
+                    "N:T205I"
+                ],
+                "ORF3a": [
+                    "ORF3a:Q57H"
+                ]
+            },
+            "source": "https://outbreak.info"
+        },
+        "B.1.526": {
+            "identifier": "B.1.526",
+            "common name": "New York",
+            "location": "New York",
+            "aliases": [],
+            "mutations": {
+                "S": [
+                    "S:D253G",
+                    "S:D614G",
+                    "S:T95I"
+                ],
+                "ORF1ab": [
+                    "ORF1ab:L3201P",
+                    "ORF1ab:T265I"
+                ],
+                "ORF3a": [
+                    "ORF3a:Q57H",
+                    "ORF3a:P42L"
+                ],
+                "ORF8": [
+                    "ORF8:T11I"
+                ]
+            },
+            "source": "https://outbreak.info"
+        }
+    },
+    "molecular": {
+        "S:D614G": {
+            "gene": "S",
+            "position": "614",
+            "ref": "D",
+            "alt": "G",
+            "note": "May increase contagion and/or pathogenicity",
+            "source": "https://www.lanl.gov/updates/sars-cov-2-variant.php"
+        }
+    }
+}
