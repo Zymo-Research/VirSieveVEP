@@ -46,9 +46,10 @@ class CombinedMutantData:
         else:
             self.strandBiasInvLog = -math.log10(vcf.strandBias.pValue)
         self.flags = []
-        for filterValue in vcf.filter:
-            if not filterValue == "PASS":
-                self.flags.append(filterValue)
+        if vcf.filter:
+            for filterValue in vcf.filter:
+                if not filterValue == "PASS":
+                    self.flags.append(filterValue)
         self.alerts = []
 
     def addFlag(self, flag:str):
