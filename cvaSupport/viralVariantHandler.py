@@ -105,6 +105,38 @@ class ProteinMutationIdentifier:
     def fromJSON(cls, jsonString:str):
         return cls.fromDict(json.loads(jsonString))
 
+    @classmethod
+    def fromString(cls, string, note:str="", source:str=""):
+        string = string.strip()
+        try:
+            gene, change = string.split(":")
+            change = change.strip()
+        except ValueError:
+            raise ValueError("Protein change notation should be Gene:change with only one colon character. That was not the number detected in %s." %string)
+        if "ins" in change:
+            ref = "-"
+            change = change.replace("ins", "")
+            try:
+                pos, alt = change.split()
+            except ValueError:
+                raise ValueError("Protein insertion notation should be gene:ins[position] [sequence].  That notation was not parsed in %s" %string)
+        elif "del" in change:
+            alt = "-"
+            change = change.replace("del", "")
+            try:
+                pos, ref = change.split()
+            except ValueError:
+                raise ValueError("Protein deletion notation should be gene:ins[position] [sequence].  That notation was not parsed in %s" %string)
+        else:
+            ref = change[0]
+            alt = change[-1]
+            pos = change[1:-1]
+            try:
+                pos = int(pos)
+            except ValueError:
+                raise ValueError("Protein substitution notation should be gene:[ref][position][alt] (such as S:D614G), but that format was not parsed from %s" %string)
+        return cls(gene, ref, pos, alt, note, source)
+
 
 class NucleicAcidMutationIdentifier:
 
@@ -143,3 +175,10 @@ class NucleicAcidMutationIdentifier:
     @classmethod
     def fromJSON(cls, jsonString: str):
         return cls.fromDict(json.loads(jsonString))
+
+
+class MutationIdentifier:
+
+    def __init__(self, proteinChange:[str, ProteinMutationIdentifier]=None, nucleicAcidChange:[str, NucleicAcidMutationIdentifier]=None, notes:str=""):
+        if not proteinChange and not nucleicAcidChange:
+            raise ValueError("Unable to create a mutation data set with no mutation data associated.")
