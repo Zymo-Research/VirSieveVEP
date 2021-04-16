@@ -37,25 +37,25 @@ mutationList_B_1_351 = [
 ]
 
 mutationList_B_1_1_7 = [
-MutationIdentifier(ProteinMutationIdentifier.fromString('Orf1ab:T1001I'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_3267_C/T')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('Orf1ab:A1708D'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_5388_C/alt')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('Orf1ab:I2230T'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_6954_T/C')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('Orf1ab:SGF 3675-3677 deletion'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_11288_/del')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('S:HV 69-70 deletion'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_21765_/del')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('S:Y144 deletion'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_21991_/del')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('S:N501Y'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_23063_A/T')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('S:A570D'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_23271_C/A')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('S:P681H'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_23604_C/A')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('S:T716I'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_23709_C/T')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('S:S982A'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_24506_T/G')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('S:D1118H'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_24914_G/C')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('Orf8:Q27stop'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_27972_C/T')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('Orf8:R52I'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28048_G/T')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('Orf8:Y73C'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28111_A/G')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('N:D3L'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28280_G/C')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('N:D3L'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28281_A/T')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('N:D3L'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28282_T/A')),
-MutationIdentifier(ProteinMutationIdentifier.fromString('N:S235F'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28977_C/T'))
+    MutationIdentifier(ProteinMutationIdentifier.fromString('Orf1ab:T1001I'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_3267_C/T')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('Orf1ab:A1708D'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_5388_C/alt')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('Orf1ab:I2230T'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_6954_T/C')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('Orf1ab:del3675 SGF'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_11288_TCTGGTTTT/-')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('S:HV 69-70 deletion'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_21765_/del')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('S:Y144 deletion'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_21991_/del')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('S:N501Y'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_23063_A/T')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('S:A570D'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_23271_C/A')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('S:P681H'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_23604_C/A')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('S:T716I'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_23709_C/T')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('S:S982A'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_24506_T/G')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('S:D1118H'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_24914_G/C')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('Orf8:Q27stop'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_27972_C/T')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('Orf8:R52I'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28048_G/T')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('Orf8:Y73C'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28111_A/G')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('N:D3L'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28280_G/C')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('N:D3L'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28281_A/T')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('N:D3L'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28282_T/A')),
+    MutationIdentifier(ProteinMutationIdentifier.fromString('N:S235F'), NucleicAcidMutationIdentifier.fromVEPString('NC_045512.2_28977_C/T'))
 
 ]
 
