@@ -20,7 +20,7 @@ class CombinedMutantData:
             vep = vepHandler.VariantEffect.variantOfNoEffect(identifier, location, alt)
         self.variantEffect = vep
         self.vepDNANotation = vep.identifier
-        self.standardDNANotation = vcf.standardMutationIdentifier
+        self.standardDNANotation = vcf.vepIdentifier
         self.consequence = vep.consequence
         self.proteinChange = vep.proteinChangeNotation
         self.isMissense = vep.isMissense
