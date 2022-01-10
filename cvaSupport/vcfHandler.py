@@ -109,7 +109,10 @@ class VariantRecord:
         try:
             strandBias = record.samples[sampleNumber].data.SB
         except AttributeError:
-            strandBias = None
+            try:
+                strandBias = record.samples[sampleNumber].site.INFO["DP4"]
+            except AttributeError:
+                strandBias = None
         return cls(record.CHROM, record.POS, record.REF, record.ALT[altAlleleNumber], record.FILTER, record.is_deletion,
                    record.is_indel, record.is_snp, strandBias,
                    mateBias, record.samples[sampleNumber].sample)

@@ -5,6 +5,7 @@ import typing
 import json
 import scipy.stats
 import math
+import re
 
 workingFolderEnv = os.environ.setdefault("WORKINGFOLDER", "/data")
 if not os.path.isdir(workingFolderEnv):
@@ -179,7 +180,8 @@ def writeBetaTable(mutationRecordTable:typing.Dict[str, typing.List[cvaSupport.m
 def writeVariantTables(mutationRecordTable:typing.Dict[str, typing.List[cvaSupport.mutationDataMerge.CombinedMutantData]]):
     columns = "\t".join(["#Sequence", "Consequence", "Protein", "PercentPrevalence", "ReadDepth", "InvLogMateBias", "InvLogStrandBias", "Flag/Filter", "Alert", "Confidence"])
     for sampleID, variantRecords in mutationRecordTable.items():
-        outputFileName = "%s.variants.txt" %sampleID
+        sanitizedSampleID = re.sub("\W", "_", sampleID)
+        outputFileName = "%s.variants.txt" %sanitizedSampleID
         outputFilePath = os.path.join(resultsFolderEnv, outputFileName)
         outputFile = open(outputFilePath, 'w')
         print(columns, file=outputFile)
@@ -190,7 +192,8 @@ def writeVariantTables(mutationRecordTable:typing.Dict[str, typing.List[cvaSuppo
 
 def writeStrainObservationTables(strainObservationTables:typing.Dict[str, typing.Dict[str, typing.Dict[str, float]]]):
     for sampleID, strainObservation in strainObservationTables.items():
-        outputFileName = "%s.strainObservations.json" %sampleID
+        sanitizedSampleID = re.sub("\W", "_", sampleID)
+        outputFileName = "%s.strainObservations.json" %sanitizedSampleID
         outputFilePath = os.path.join(resultsFolderEnv, outputFileName)
         outputFile = open(outputFilePath, 'w')
         json.dump(strainObservation, outputFile, indent=4)
@@ -199,7 +202,8 @@ def writeStrainObservationTables(strainObservationTables:typing.Dict[str, typing
 
 def writeVarShare(mutationRecordTable:typing.Dict[str, typing.List[cvaSupport.mutationDataMerge.CombinedMutantData]]):
     for sampleID, variantRecords in mutationRecordTable.items():
-        outputFileName = "%s.variants.json" %sampleID
+        sanitizedSampleID = re.sub("\W", "_", sampleID)
+        outputFileName = "%s.variants.json" %sanitizedSampleID
         outputFilePath = os.path.join(resultsFolderEnv, outputFileName)
         finalOutput = {sampleID: {}}
         variantDict = finalOutput[sampleID]
