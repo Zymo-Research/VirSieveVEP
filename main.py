@@ -78,7 +78,7 @@ def findStringentFilteredVCF(originalVCFPath:str, stringentFilteredVCFFolder:str
     originalVCFBaseName = baseName(originalVCFPath)
     candidates = []
     for vcf in vcfList:
-        if baseName(vcf) == originalVCFBaseName:
+        if baseName(vcf) == originalVCFBaseName and vcf.endswith("alignmentArtifactFilter.vcf"):
             candidates.append(vcf)
     if len(candidates) == 1:
         return candidates[0]
