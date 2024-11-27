@@ -1,4 +1,4 @@
-FROM ensemblorg/ensembl-vep:release_113.3
+FROM ensemblorg/ensembl-vep:release_103
 
 USER root
 RUN apt-get update  && apt-get install -y less
