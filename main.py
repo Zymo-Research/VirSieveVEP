@@ -122,10 +122,21 @@ def applyConfidenceScoresToMergedMutationList(vcfPath:str, mergedMutationList:ty
         print("No stringent filter VCF found to match %s. No high-confidence variants will be identified." %vcfPath)
     else:
         stringentVCFTable = makeVCFJoiningTable(stringentFilterVCF)
+        freyjaModVCF = makeFreyjaVCFMods(stringentFilterVCF)
     highConfidenceList = list(stringentVCFTable.keys())
     for mergedMutation in mergedMutationList:
         calculateAndApplyConfidenceScoreToMergedMutation(mergedMutation, highConfidenceList)
     return mergedMutationList
+
+
+def makeFreyjaVCFMods(vcfPath:str, stringentFilteredVCFFolder:str=stringentFilteredVCFFolderEnv):
+    stringentFilterVCF = findStringentFilteredVCF(vcfPath, stringentFilteredVCFFolder)
+    if not stringentFilterVCF:
+        stringentVCFTable = {}
+        print("No stringent filter VCF found to match %s. No VCF was converted for Freyja." %vcfPath)
+    outputVCFPath = stringentFilterVCF[:-3] + "freyjaMod.vcf"
+    cvaSupport.freyjaVCFModder.processVCF(stringentFilterVCF, outputVCFPath)
+    return outputVCFPath
 
 
 def makeResultsTables():
