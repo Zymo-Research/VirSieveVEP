@@ -9,3 +9,4 @@ from . import vepRunner
 from . import mutationDataMerge
 from . import problematicSites
 from . import variantsOfConcernHandler
+from . import freyjaVCFModder

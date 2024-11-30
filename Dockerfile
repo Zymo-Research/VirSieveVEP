@@ -25,7 +25,7 @@ COPY cvaSupport /opt/vep/ronavep/cvaSupport
 
 RUN chown -R vep /opt/vep/ronavep
 
-USER vep
+#USER vep
 
 ENV PYTHONUNBUFFERED=1
 

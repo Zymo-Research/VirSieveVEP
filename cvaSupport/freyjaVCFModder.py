@@ -1,4 +1,7 @@
-
+FORMATLINESTOADD = [
+    '##FORMAT=<ID=ALT_DP,Number=1,Type=Integer,Description="Alternate allele depth">',
+    '##FORMAT=<ID=ALT_FREQ,Number=1,Type=Float,Description="Alternate allele frequency">'
+]
 
 def processVCFLine(vcfLine:str) -> str:
     vcfLine = vcfLine.strip()
@@ -38,10 +41,16 @@ def modifyVCFLine(vcfLine:str) -> str:
 
 
 def processVCF(vcfPathInputPath:str, vcfOutputPath:str):
+    addedFormatLines = False
     vcf = open(vcfPathInputPath, 'r')
     vcfOutput = open(vcfOutputPath, 'w')
     for line in vcf:
         newLine = processVCFLine(line)
+        if newLine.startswith("#CHROM"):
+            if FORMATLINESTOADD and not addedFormatLines:
+                for line in FORMATLINESTOADD:
+                    print(line, file=vcfOutput)
+                addedFormatLines = True
         print(newLine, file=vcfOutput)
     vcf.close()
     vcfOutput.close()
