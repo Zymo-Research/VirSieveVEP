@@ -13,15 +13,18 @@ if not os.path.isdir(workingFolderEnv):
 inputFolderEnv = os.environ.setdefault("INPUTFOLDER", os.path.join(workingFolderEnv, "filteredVCF"))
 if not os.path.isdir(inputFolderEnv):
     raise NotADirectoryError("Unable to find input folder at %s" %inputFolderEnv)
-stringentFilteredVCFFolderEnv = os.environ.setdefault("STRINGENTVCFFOLDER", os.path.join(workingFolderEnv, "alignmentArtifactFilteredVCF"))
-if not os.path.isdir(stringentFilteredVCFFolderEnv):
-    print("WARNING: Stringent filtered VCF folder was not found at %s. High confidence variants will not be identified." %stringentFilteredVCFFolderEnv)
+# stringentFilteredVCFFolderEnv = os.environ.setdefault("STRINGENTVCFFOLDER", os.path.join(workingFolderEnv, "alignmentArtifactFilteredVCF"))
+# if not os.path.isdir(stringentFilteredVCFFolderEnv):
+#     print("WARNING: Stringent filtered VCF folder was not found at %s. High confidence variants will not be identified." %stringentFilteredVCFFolderEnv)
 vepIntermediatesFolderEnv = os.environ.setdefault("VEPINTERMEDIATESFOLDER", os.path.join(workingFolderEnv, "vepOutputs"))
 if not os.path.isdir(vepIntermediatesFolderEnv):
     os.mkdir(vepIntermediatesFolderEnv)
 resultsFolderEnv = os.environ.setdefault("RESULTSFOLDER", os.path.join(workingFolderEnv, "results"))
 if not os.path.isdir(resultsFolderEnv):
     os.mkdir(resultsFolderEnv)
+freyjaOutputFolderEnv = os.environ.setdefault("FREYJAOUTPUTFOLDER", os.path.join(workingFolderEnv, "freyjaOutput"))
+if not os.path.isdir(freyjaOutputFolderEnv):
+    os.mkdir(freyjaOutputFolderEnv)
 
 
 def getVCFList(folder:str=inputFolderEnv):
@@ -69,23 +72,23 @@ def makeVEPJoiningTable(vepOutputPath:str):
     return joiningTable
 
 
-def findStringentFilteredVCF(originalVCFPath:str, stringentFilteredVCFFolder:str=stringentFilteredVCFFolderEnv):
-    def baseName(filePath:str):
-        return os.path.split(filePath)[1].split(".")[0]
-    if not os.path.isdir(stringentFilteredVCFFolder):
-        return None
-    vcfList = getVCFList(stringentFilteredVCFFolder)
-    originalVCFBaseName = baseName(originalVCFPath)
-    candidates = []
-    for vcf in vcfList:
-        if baseName(vcf) == originalVCFBaseName and vcf.endswith("alignmentArtifactFilter.vcf"):
-            candidates.append(vcf)
-    if len(candidates) == 1:
-        return candidates[0]
-    elif not candidates:
-        return None
-    else:
-        raise RuntimeError("Found multiple potential candidates for stringent filter for original VCF %s. Candidates were %s" %(originalVCFPath, candidates))
+# def findStringentFilteredVCF(originalVCFPath:str, stringentFilteredVCFFolder:str=stringentFilteredVCFFolderEnv):
+#     def baseName(filePath:str):
+#         return os.path.split(filePath)[1].split(".")[0]
+#     if not os.path.isdir(stringentFilteredVCFFolder):
+#         return None
+#     vcfList = getVCFList(stringentFilteredVCFFolder)
+#     originalVCFBaseName = baseName(originalVCFPath)
+#     candidates = []
+#     for vcf in vcfList:
+#         if baseName(vcf) == originalVCFBaseName and vcf.endswith("alignmentArtifactFilter.vcf"):
+#             candidates.append(vcf)
+#     if len(candidates) == 1:
+#         return candidates[0]
+#     elif not candidates:
+#         return None
+#     else:
+#         raise RuntimeError("Found multiple potential candidates for stringent filter for original VCF %s. Candidates were %s" %(originalVCFPath, candidates))
 
 
 def calculateAndApplyConfidenceScoreToMergedMutation(mergedMutation:cvaSupport.mutationDataMerge.CombinedMutantData, highConfidenceMutationList:typing.List[str]):
@@ -115,27 +118,23 @@ def calculateAndApplyConfidenceScoreToMergedMutation(mergedMutation:cvaSupport.m
     return mergedMutation
 
 
-def applyConfidenceScoresToMergedMutationList(vcfPath:str, mergedMutationList:typing.List[cvaSupport.mutationDataMerge.CombinedMutantData], stringentFilteredVCFFolder:str=stringentFilteredVCFFolderEnv):
-    stringentFilterVCF = findStringentFilteredVCF(vcfPath, stringentFilteredVCFFolder)
-    if not stringentFilterVCF:
-        stringentVCFTable = {}
-        print("No stringent filter VCF found to match %s. No high-confidence variants will be identified." %vcfPath)
-    else:
-        stringentVCFTable = makeVCFJoiningTable(stringentFilterVCF)
-        freyjaModVCF = makeFreyjaVCFMods(stringentFilterVCF)
-    highConfidenceList = list(stringentVCFTable.keys())
-    for mergedMutation in mergedMutationList:
-        calculateAndApplyConfidenceScoreToMergedMutation(mergedMutation, highConfidenceList)
-    return mergedMutationList
+# def applyConfidenceScoresToMergedMutationList(vcfPath:str, mergedMutationList:typing.List[cvaSupport.mutationDataMerge.CombinedMutantData], stringentFilteredVCFFolder:str=stringentFilteredVCFFolderEnv):
+#     stringentFilterVCF = findStringentFilteredVCF(vcfPath, stringentFilteredVCFFolder)
+#     if not stringentFilterVCF:
+#         stringentVCFTable = {}
+#         print("No stringent filter VCF found to match %s. No high-confidence variants will be identified." %vcfPath)
+#     else:
+#         stringentVCFTable = makeVCFJoiningTable(stringentFilterVCF)
+#         freyjaModVCF = makeFreyjaVCFMods(stringentFilterVCF)
+#     highConfidenceList = list(stringentVCFTable.keys())
+#     for mergedMutation in mergedMutationList:
+#         calculateAndApplyConfidenceScoreToMergedMutation(mergedMutation, highConfidenceList)
+#     return mergedMutationList
 
 
-def makeFreyjaVCFMods(vcfPath:str, stringentFilteredVCFFolder:str=stringentFilteredVCFFolderEnv):
-    stringentFilterVCF = findStringentFilteredVCF(vcfPath, stringentFilteredVCFFolder)
-    if not stringentFilterVCF:
-        stringentVCFTable = {}
-        print("No stringent filter VCF found to match %s. No VCF was converted for Freyja." %vcfPath)
-    outputVCFPath = stringentFilterVCF[:-3] + "freyjaMod.vcf"
-    cvaSupport.freyjaVCFModder.processVCF(stringentFilterVCF, outputVCFPath)
+def makeFreyjaVCFMods(vcfPath:str, outputFolder:str=freyjaOutputFolderEnv):
+    outputVCFPath = os.path.join(outputFolder, os.path.split(vcfPath[:-3])[1] + "freyjaMod.vcf")
+    cvaSupport.freyjaVCFModder.processVCF(vcfPath, outputVCFPath)
     return outputVCFPath
 
 
@@ -145,6 +144,7 @@ def makeResultsTables():
     strainObservationsTable = {}
     for vcfPath in vcfList:
         vepOutput = runVEP(vcfPath)
+        freyjaModVCF = makeFreyjaVCFMods(vcfPath)
         vcfTable, sampleID = makeVCFJoiningTable(vcfPath, returnSampleID=True)
         print("Analyzing %s" %sampleID)
         vepTable = makeVEPJoiningTable(vepOutput)
@@ -153,7 +153,7 @@ def makeResultsTables():
         results[sampleID].sort(key=operator.attrgetter("locus"))
         cvaSupport.problematicSites.applySiteWarnings(results[sampleID])
         strainObservations = cvaSupport.variantsOfConcernHandler.applyVariantsOfConcern(results[sampleID])
-        applyConfidenceScoresToMergedMutationList(vcfPath, results[sampleID])
+        #applyConfidenceScoresToMergedMutationList(vcfPath, results[sampleID])
         strainObservationsTable[sampleID] = strainObservations
         print("%s analysis completed." %sampleID)
     return results, strainObservationsTable
