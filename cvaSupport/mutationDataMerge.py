@@ -40,7 +40,10 @@ class CombinedMutantData:
         if not vcf.mateBias:
             self.mateBiasInvLog = None
         else:
-            self.mateBiasInvLog = -math.log10(vcf.mateBias.pValue)
+            try:
+                self.mateBiasInvLog = -math.log10(vcf.mateBias.pValue)
+            except ValueError:
+                self.mateBiasInvLog = None
         if not vcf.strandBias:
             self.strandBiasInvLog = None
         else:
