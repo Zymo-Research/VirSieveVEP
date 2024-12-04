@@ -13,7 +13,7 @@ WORKDIR /opt/vep/ronavep
 
 RUN pip3 install -r requirements.txt
 
-COPY references /opt/vep/ronavep/references
+COPY references/ /opt/vep/ronavep/references
 
 WORKDIR /opt/vep/ronavep/references
 
